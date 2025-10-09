@@ -31,6 +31,8 @@ local-seo-reports/
     ├── README.md                  ← Complete documentation
     ├── WORKFLOW.md                ← Production workflow guide
     ├── SETUP_CHECKLIST.md         ← Step-by-step checklist
+    ├── IMAGE_GUIDE.md             ← Image sizing & optimization
+    ├── VIEWING_REPORTS.md         ← How to view & export reports
     └── PROJECT_SUMMARY.md         ← Technical overview
 ```
 
@@ -95,6 +97,8 @@ python generate_report.py data/client_name.json
 | **Get started NOW** | GET_STARTED.md |
 | **First time setup** | QUICKSTART.md |
 | **Create a report** | WORKFLOW.md |
+| **Image sizing & optimization** | IMAGE_GUIDE.md |
+| **View & export reports** | VIEWING_REPORTS.md |
 | **Understand everything** | README.md |
 | **Follow a checklist** | SETUP_CHECKLIST.md |
 | **See technical details** | PROJECT_SUMMARY.md |
