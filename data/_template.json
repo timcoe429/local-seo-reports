@@ -1,0 +1,258 @@
+{
+  "_comment": "COPY THIS FILE TO CREATE A NEW REPORT - Replace all placeholder text with your client's data",
+  
+  "company": {
+    "name": "Client Company Name"
+  },
+  
+  "report_date": "Month Year",
+  
+  "cover": {
+    "subtitle": "Local SEO Analysis & Growth Strategy",
+    "metrics": [
+      { "label": "Current Ranking", "value": "#X" },
+      { "label": "Google Reviews", "value": "XXX" },
+      { "label": "Avg. Rating", "value": "X.X" }
+    ]
+  },
+  
+  "toc": [
+    { "title": "Executive Summary" },
+    { "title": "Domain Authority & Technical SEO" },
+    { "title": "Local Citations & NAP Consistency" },
+    { "title": "Reputation Management" },
+    { "title": "Local Search Grid Performance" },
+    { "title": "Competitive Analysis" },
+    { "title": "Website Conversion Rate Optimization" },
+    { "title": "Organic Traffic Analysis" },
+    { "title": "Strategic Recommendations" }
+  ],
+  
+  "executive_summary": {
+    "intro": "Write a 2-3 sentence overview of the client's current state...",
+    "strengths": [
+      "First strength",
+      "Second strength",
+      "Third strength",
+      "Fourth strength"
+    ],
+    "weaknesses": [
+      "First weakness",
+      "Second weakness",
+      "Third weakness",
+      "Fourth weakness"
+    ],
+    "opportunities": [
+      "First opportunity",
+      "Second opportunity",
+      "Third opportunity",
+      "Fourth opportunity"
+    ],
+    "critical_finding": "<strong>Main critical finding headline.</strong> Detailed explanation of the critical finding...",
+    "kpis": [
+      { "label": "Domain Authority", "value": "XX/100" },
+      { "label": "Trust Flow", "value": "XX/100" },
+      { "label": "Citation Flow", "value": "XX/100" },
+      { "label": "Total Backlinks", "value": "XXX" },
+      { "label": "Linking Domains", "value": "XXX" },
+      { "label": "Organic Traffic (Monthly)", "value": "XXX" }
+    ]
+  },
+  
+  "domain_authority": {
+    "screenshot": "",
+    "what_this_means": "Explanation of what the data means...",
+    "why_it_matters": "Explanation of why this matters to the client...",
+    "how_to_improve": [
+      "First improvement action",
+      "Second improvement action",
+      "Third improvement action",
+      "Fourth improvement action"
+    ],
+    "key_insight": "Key insight about the domain authority situation..."
+  },
+  
+  "citations": {
+    "screenshot": "",
+    "what_this_means": "Explanation of citation data...",
+    "why_it_matters": "Why citations matter...",
+    "how_to_improve": [
+      "Citation improvement action 1",
+      "Citation improvement action 2",
+      "Citation improvement action 3",
+      "Citation improvement action 4"
+    ],
+    "warning": "<strong>Warning headline.</strong> Detailed warning message...",
+    "nap_errors": [
+      { "type": "Address Inconsistency", "count": "X" },
+      { "type": "Phone Inconsistency", "count": "X" }
+    ]
+  },
+  
+  "reputation": {
+    "screenshot": "",
+    "what_this_means": "Review situation explanation...",
+    "why_it_matters": "Why reviews matter...",
+    "how_to_improve": [
+      "Review generation strategy 1",
+      "Review generation strategy 2",
+      "Review generation strategy 3",
+      "Review generation strategy 4"
+    ],
+    "key_insight": "Key insight about reputation...",
+    "review_distribution": [
+      { "platform": "Google Reviews", "count": "XXX", "rating": "X.X" },
+      { "platform": "Yelp Reviews", "count": "XX", "rating": "X.X" },
+      { "platform": "New Reviews (Last 30 Days)", "count": "X", "rating": "" }
+    ]
+  },
+  
+  "search_grid": {
+    "screenshot": "",
+    "what_this_means": "Search grid performance explanation...",
+    "why_it_matters": "Why local search position matters...",
+    "how_to_improve": [
+      "Grid improvement strategy 1",
+      "Grid improvement strategy 2",
+      "Grid improvement strategy 3",
+      "Grid improvement strategy 4"
+    ],
+    "key_insight": "Geographic performance insight..."
+  },
+  
+  "competitive_analysis": {
+    "screenshot": "",
+    "what_this_means": "Competitive landscape overview...",
+    "why_it_matters": "Why competitive position matters...",
+    "how_to_improve": [
+      "Competitive strategy 1",
+      "Competitive strategy 2",
+      "Competitive strategy 3",
+      "Competitive strategy 4"
+    ],
+    "competitors": [
+      {
+        "rank": 1,
+        "name": "Competitor Name",
+        "avg_position": "X.X",
+        "reviews": "XXX",
+        "rating": "X.X",
+        "links": "XXX",
+        "is_client": false
+      },
+      {
+        "rank": 2,
+        "name": "Your Client",
+        "avg_position": "X.X",
+        "reviews": "XXX",
+        "rating": "X.X",
+        "links": "XXX",
+        "is_client": true
+      }
+    ],
+    "key_insight": "Key competitive insight..."
+  },
+  
+  "market_threat": null,
+  
+  "website_cro": {
+    "screenshot": "",
+    "current_state": "Current website state description...",
+    "problems": [
+      "CRO problem 1",
+      "CRO problem 2",
+      "CRO problem 3",
+      "CRO problem 4"
+    ],
+    "recommendations": [
+      "CRO recommendation 1",
+      "CRO recommendation 2",
+      "CRO recommendation 3",
+      "CRO recommendation 4"
+    ],
+    "key_insight": "Conversion optimization insight...",
+    "ab_tests": [
+      {
+        "title": "Test Name",
+        "description": "Test description and hypothesis..."
+      }
+    ]
+  },
+  
+  "organic_traffic": {
+    "screenshot": "",
+    "what_this_means": "Traffic data explanation...",
+    "why_it_matters": "Why organic traffic matters...",
+    "how_to_improve": [
+      "Traffic improvement 1",
+      "Traffic improvement 2",
+      "Traffic improvement 3",
+      "Traffic improvement 4"
+    ],
+    "key_insight": "Traffic growth insight...",
+    "growth_opportunity": [
+      { "label": "Current Monthly Visits", "value": "XXX" },
+      { "label": "Projected with Optimization (6 months)", "value": "XXX-XXX" },
+      { "label": "Estimated Additional Monthly Leads", "value": "XX-XX" },
+      { "label": "Potential Annual Revenue Impact", "value": "$XXK-XXXK" }
+    ]
+  },
+  
+  "recommendations": {
+    "intro": "Introduction to recommendations section...",
+    "items": [
+      {
+        "title": "Recommendation Title (Timeframe)",
+        "priority": "Critical/High/Medium/Low",
+        "effort": "Low/Medium/High",
+        "impact": "High/Medium/Low",
+        "description": "Detailed recommendation description..."
+      }
+    ],
+    "quick_wins": {
+      "label": "Quick Wins Label",
+      "text": "Quick wins summary and strategy..."
+    }
+  },
+  
+  "final_summary": {
+    "intro": "Final summary introduction...",
+    "findings": [
+      {
+        "title": "Finding Title",
+        "description": "Finding description..."
+      }
+    ],
+    "timeframes": [
+      {
+        "period": "30-Day Impact",
+        "actions": [
+          "Action 1",
+          "Action 2",
+          "Action 3"
+        ],
+        "expected": "Expected: XX% lead increase"
+      },
+      {
+        "period": "90-Day Impact",
+        "actions": [
+          "Action 1",
+          "Action 2",
+          "Action 3"
+        ],
+        "expected": "Expected: XX% lead increase"
+      },
+      {
+        "period": "12-Month Impact",
+        "actions": [
+          "Action 1",
+          "Action 2",
+          "Action 3"
+        ],
+        "expected": "Expected: XXX% lead increase"
+      }
+    ],
+    "bottom_line": "<strong>Bold bottom line message.</strong> Final compelling statement..."
+  }
+}
+

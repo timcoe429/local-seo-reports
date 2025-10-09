@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local SEO Performance Report - {{ company.name }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+        
+        h1, h2, h3, h4, h5, h6,
+        .cover-title,
+        .cover-subtitle,
+        .toc-title,
+        .section-title,
+        .section-number,
+        .col-header,
+        .insight-label,
+        .warning-label,
+        .rec-title,
+        .competitor-name,
+        .data-label {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        /* Cover Page */
+        .cover {
+            background: #0f58a8;
+            color: white;
+            padding: 80px 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .cover-date {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        
+        .cover-subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            opacity: 0.95;
+            margin-bottom: 60px;
+        }
+        
+        .cover-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+            padding-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .cover-metric-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+        
+        .cover-metric-value {
+            font-size: 42px;
+            font-weight: 700;
+        }
+        
+        /* Table of Contents */
+        .toc-page {
+            padding: 80px 60px;
+            page-break-after: always;
+        }
+        
+        .toc-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #0f58a8;
+        }
+        
+        .toc-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e5e5;
+            text-decoration: none;
+            color: #1a1a1a;
+            transition: all 0.2s;
+        }
+        
+        .toc-item:hover {
+            padding-left: 10px;
+            color: #0f58a8;
+        }
+        
+        .toc-item-number {
+            font-weight: 700;
+            font-size: 18px;
+            margin-right: 20px;
+            color: #0f58a8;
+        }
+        
+        .toc-item-title {
+            flex: 1;
+            font-size: 18px;
+        }
+        
+        .toc-item-page {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        /* Content Pages */
+        .content-page {
+            padding: 80px 60px;
+            page-break-after: always;
+        }
+        
+        .section-number {
+            font-size: 14px;
+            color: #0f58a8;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        
+        .section-intro {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 50px;
+        }
+        
+        /* Three Column Structure */
+        .three-col-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .col-header {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #0f58a8;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0f58a8;
+        }
+        
+        .col-content {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #333;
+        }
+        
+        .col-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .col-content li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 12px;
+        }
+        
+        .col-content li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #0f58a8;
+            font-weight: 700;
+        }
+        
+        /* Data Display */
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .data-label {
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .data-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f58a8;
+        }
+        
+        /* Screenshot Container */
+        .screenshot-box {
+            margin: 40px 0;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .screenshot-box img {
+            width: 100%;
+            display: block;
+        }
+        
+        /* Key Insight Box */
+        .insight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #0f58a8;
+            padding: 30px;
+            margin: 40px 0;
+        }
+        
+        .insight-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #0f58a8;
+            margin-bottom: 15px;
+        }
+        
+        .insight-text {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1a1a1a;
+        }
+        
+        /* Warning Box */
+        .warning-box {
+            background: #fff8f0;
+            border-left: 4px solid #f59e0b;
+            padding: 30px;
+            margin: 40px 0;
+        }
+        
+        .warning-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #f59e0b;
+            margin-bottom: 15px;
+        }
+        
+        /* Recommendations */
+        .rec-item {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .rec-item:last-child {
+            border-bottom: none;
+        }
+        
+        .rec-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #0f58a8;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .rec-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+        
+        .rec-description {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #333;
+        }
+        
+        /* Competitor Table */
+        .competitor-table {
+            width: 100%;
+            margin: 40px 0;
+            border-collapse: collapse;
+        }
+        
+        .competitor-table th {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+            border-bottom: 2px solid #0f58a8;
+        }
+        
+        .competitor-table td {
+            padding: 20px 15px;
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 15px;
+        }
+        
+        .competitor-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .competitor-name {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            
+            .cover, .content-page, .toc-page {
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            
+            .three-col-section,
+            .insight-box,
+            .warning-box,
+            .rec-item,
+            .screenshot-box,
+            .competitor-table {
+                page-break-inside: avoid;
+            }
+            
+            .rec-item {
+                page-break-before: auto;
+            }
+            
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+            
+            @page {
+                size: letter;
+                margin: 0.5in;
+            }
+        }
+        
+        /* Utility Classes */
+        .mb-30 { margin-bottom: 30px; }
+        .mb-40 { margin-bottom: 40px; }
+        .mb-60 { margin-bottom: 60px; }
+        .mt-60 { margin-top: 60px; }
+        
+        strong {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- COVER PAGE -->
+        <div class="cover">
+            <div class="cover-date">{{ report_date }} | Confidential</div>
+            <div class="cover-title">{{ company.name }}<br>Digital Performance Audit</div>
+            <div class="cover-subtitle">{{ cover.subtitle }}</div>
+            
+            <div class="cover-metrics">
+                {% for metric in cover.metrics %}
+                <div>
+                    <div class="cover-metric-label">{{ metric.label }}</div>
+                    <div class="cover-metric-value">{{ metric.value }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- TABLE OF CONTENTS -->
+        <div class="toc-page">
+            <h1 class="toc-title">Table of Contents</h1>
+            
+            {% for item in toc %}
+            <a href="#" class="toc-item">
+                <span class="toc-item-number">{{ "%02d"|format(loop.index) }}</span>
+                <span class="toc-item-title">{{ item.title }}</span>
+                <span class="toc-item-page">{{ "%02d"|format(loop.index + 2) }}</span>
+            </a>
+            {% endfor %}
+        </div>
+
+        <!-- SECTION 01: EXECUTIVE SUMMARY -->
+        <div class="content-page">
+            <div class="section-number">01 — Executive Summary</div>
+            <h1 class="section-title">Current State Assessment</h1>
+            
+            <p class="section-intro">
+                {{ executive_summary.intro }}
+            </p>
+            
+            <div class="three-col-section">
+                <div>
+                    <div class="col-header">Strengths</div>
+                    <div class="col-content">
+                        <ul>
+                            {% for item in executive_summary.strengths %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">Weaknesses</div>
+                    <div class="col-content">
+                        <ul>
+                            {% for item in executive_summary.weaknesses %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">Opportunities</div>
+                    <div class="col-content">
+                        <ul>
+                            {% for item in executive_summary.opportunities %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            {% if executive_summary.critical_finding %}
+            <div class="warning-box">
+                <div class="warning-label">Critical Finding</div>
+                <div class="insight-text">
+                    {{ executive_summary.critical_finding }}
+                </div>
+            </div>
+            {% endif %}
+            
+            <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">Key Performance Indicators</h3>
+            
+            {% for kpi in executive_summary.kpis %}
+            <div class="data-row">
+                <span class="data-label">{{ kpi.label }}</span>
+                <span class="data-value">{{ kpi.value }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- SECTION 02: DOMAIN AUTHORITY -->
+        <div class="content-page">
+            <div class="section-number">02 — Technical SEO Foundation</div>
+            <h1 class="section-title">Domain Authority & Backlink Profile</h1>
+            
+            {% if domain_authority.screenshot %}
+            <div class="screenshot-box">
+                <img src="{{ domain_authority.screenshot }}" alt="Domain Authority Analysis" style="width: 100%; height: auto;">
+            </div>
+            {% endif %}
+            
+            <div class="three-col-section mt-60">
+                <div>
+                    <div class="col-header">What This Means</div>
+                    <div class="col-content">
+                        {{ domain_authority.what_this_means }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">Why It Matters</div>
+                    <div class="col-content">
+                        {{ domain_authority.why_it_matters }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">How To Improve</div>
+                    <div class="col-content">
+                        <ul>
+                            {% for item in domain_authority.how_to_improve %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            {% if domain_authority.key_insight %}
+            <div class="insight-box mt-60">
+                <div class="insight-label">Key Insight</div>
+                <div class="insight-text">
+                    {{ domain_authority.key_insight }}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- SECTION 03: CITATIONS -->
+        <div class="content-page">
+            <div class="section-number">03 — Local Citations</div>
+            <h1 class="section-title">Citation Completeness & NAP Consistency</h1>
+            
+            {% if citations.screenshot %}
+            <div class="screenshot-box">
+                <img src="{{ citations.screenshot }}" alt="Citation Analysis">
+            </div>
+            {% endif %}
+            
+            <div class="three-col-section mt-60">
+                <div>
+                    <div class="col-header">What This Means</div>
+                    <div class="col-content">
+                        {{ citations.what_this_means }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">Why It Matters</div>
+                    <div class="col-content">
+                        {{ citations.why_it_matters }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">How To Improve</div>
+                    <div class="col-content">
+                        <ul>
+                            {% for item in citations.how_to_improve %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            {% if citations.warning %}
+            <div class="warning-box mt-60">
+                <div class="warning-label">Immediate Action Required</div>
+                <div class="insight-text">
+                    {{ citations.warning }}
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if citations.nap_errors %}
+            <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">NAP Errors Identified</h3>
+            
+            {% for error in citations.nap_errors %}
+            <div class="data-row">
+                <span class="data-label">{{ error.type }}</span>
+                <span class="data-value">{{ error.count }}</span>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <!-- SECTION 04: REPUTATION -->
+        <div class="content-page">
+            <div class="section-number">04 — Online Reputation</div>
+            <h1 class="section-title">Review Analysis & Management</h1>
+            
+            {% if reputation.screenshot %}
+            <div class="screenshot-box">
+                <img src="{{ reputation.screenshot }}" alt="Reputation Management">
+            </div>
+            {% endif %}
+            
+            <div class="three-col-section mt-60">
+                <div>
+                    <div class="col-header">What This Means</div>
+                    <div class="col-content">
+                        {{ reputation.what_this_means }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">Why It Matters</div>
+                    <div class="col-content">
+                        {{ reputation.why_it_matters }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">How To Improve</div>
+                    <div class="col-content">
+                        <ul>
+                            {% for item in reputation.how_to_improve %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            {% if reputation.key_insight %}
+            <div class="insight-box mt-60">
+                <div class="insight-label">Competitive Advantage</div>
+                <div class="insight-text">
+                    {{ reputation.key_insight }}
+                </div>
+            </div>
+            {% endif %}
+            
+            <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">Review Distribution</h3>
+            
+            {% for platform in reputation.review_distribution %}
+            <div class="data-row">
+                <span class="data-label">{{ platform.platform }}</span>
+                <span class="data-value">{{ platform.count }} ({{ platform.rating }}★)</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- SECTION 05: LOCAL SEARCH GRID -->
+        <div class="content-page">
+            <div class="section-number">05 — Geographic Performance</div>
+            <h1 class="section-title">Local Search Grid Analysis</h1>
+            
+            {% if search_grid.screenshot %}
+            <div class="screenshot-box">
+                <img src="{{ search_grid.screenshot }}" alt="Local Search Grid">
+            </div>
+            {% endif %}
+            
+            <div class="three-col-section mt-60">
+                <div>
+                    <div class="col-header">What This Means</div>
+                    <div class="col-content">
+                        {{ search_grid.what_this_means }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">Why It Matters</div>
+                    <div class="col-content">
+                        {{ search_grid.why_it_matters }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">How To Improve</div>
+                    <div class="col-content">
+                        <ul>
+                            {% for item in search_grid.how_to_improve %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            {% if search_grid.key_insight %}
+            <div class="insight-box mt-60">
+                <div class="insight-label">Geographic Opportunity</div>
+                <div class="insight-text">
+                    {{ search_grid.key_insight }}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- SECTION 06: COMPETITIVE ANALYSIS -->
+        <div class="content-page">
+            <div class="section-number">06 — Market Positioning</div>
+            <h1 class="section-title">Competitive Landscape Analysis</h1>
+            
+            {% if competitive_analysis.screenshot %}
+            <div class="screenshot-box">
+                <img src="{{ competitive_analysis.screenshot }}" alt="Competitive Analysis">
+            </div>
+            {% endif %}
+            
+            <div class="three-col-section mt-60">
+                <div>
+                    <div class="col-header">What This Means</div>
+                    <div class="col-content">
+                        {{ competitive_analysis.what_this_means }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">Why It Matters</div>
+                    <div class="col-content">
+                        {{ competitive_analysis.why_it_matters }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">How To Improve</div>
+                    <div class="col-content">
+                        <ul>
+                            {% for item in competitive_analysis.how_to_improve %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">Top {{ competitive_analysis.competitors|length }} Competitors</h3>
+            
+            <table class="competitor-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Business Name</th>
+                        <th>Avg. Position</th>
+                        <th>Reviews</th>
+                        <th>Rating</th>
+                        <th>Links</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for competitor in competitive_analysis.competitors %}
+                    <tr{% if competitor.is_client %} style="background: #f0f7ff;"{% endif %}>
+                        <td><strong>{{ competitor.rank }}</strong></td>
+                        <td class="competitor-name">{{ competitor.name }}</td>
+                        <td>{{ competitor.avg_position }}</td>
+                        <td>{{ competitor.reviews }}</td>
+                        <td>{{ competitor.rating }}★</td>
+                        <td>{{ competitor.links }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            {% if competitive_analysis.key_insight %}
+            <div class="insight-box mt-60">
+                <div class="insight-label">Strategic Finding</div>
+                <div class="insight-text">
+                    {{ competitive_analysis.key_insight }}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- SECTION 07: MARKET THREAT (if exists) -->
+        {% if market_threat %}
+        <div class="content-page">
+            <div class="section-number">07 — Market Expansion Analysis</div>
+            <h1 class="section-title">{{ market_threat.title }}</h1>
+            
+            {% if market_threat.screenshot %}
+            <div class="screenshot-box">
+                <img src="{{ market_threat.screenshot }}" alt="Market Analysis">
+            </div>
+            {% endif %}
+            
+            <div class="three-col-section mt-60">
+                <div>
+                    <div class="col-header">Market Dynamics</div>
+                    <div class="col-content">
+                        {{ market_threat.market_dynamics }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">Competitive Threat</div>
+                    <div class="col-content">
+                        {{ market_threat.competitive_threat }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">Expansion Strategy</div>
+                    <div class="col-content">
+                        <ul>
+                            {% for item in market_threat.expansion_strategy %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            {% if market_threat.competitors %}
+            <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">Key {{ market_threat.market_name }} Competitors</h3>
+            
+            <table class="competitor-table">
+                <thead>
+                    <tr>
+                        <th>Business Name</th>
+                        <th>Location</th>
+                        <th>Reviews</th>
+                        <th>Rating</th>
+                        <th>Competitive Advantage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for competitor in market_threat.competitors %}
+                    <tr>
+                        <td class="competitor-name">{{ competitor.name }}</td>
+                        <td>{{ competitor.location }}</td>
+                        <td>{{ competitor.reviews }}</td>
+                        <td>{{ competitor.rating }}★</td>
+                        <td>{{ competitor.advantage }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+            
+            {% if market_threat.warning %}
+            <div class="warning-box mt-60">
+                <div class="warning-label">Revenue Impact</div>
+                <div class="insight-text">
+                    {{ market_threat.warning }}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- SECTION 08: WEBSITE CRO -->
+        <div class="content-page">
+            <div class="section-number">{% if market_threat %}08{% else %}07{% endif %} — Conversion Optimization</div>
+            <h1 class="section-title">Website CRO Analysis</h1>
+            
+            {% if website_cro.screenshot %}
+            <div class="screenshot-box">
+                <img src="{{ website_cro.screenshot }}" alt="Website Analysis">
+            </div>
+            {% endif %}
+            
+            <div class="three-col-section mt-60">
+                <div>
+                    <div class="col-header">Current State</div>
+                    <div class="col-content">
+                        {{ website_cro.current_state }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">Problems Identified</div>
+                    <div class="col-content">
+                        <ul>
+                            {% for item in website_cro.problems %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">Recommendations</div>
+                    <div class="col-content">
+                        <ul>
+                            {% for item in website_cro.recommendations %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            {% if website_cro.key_insight %}
+            <div class="insight-box mt-60">
+                <div class="insight-label">Conversion Psychology</div>
+                <div class="insight-text">
+                    {{ website_cro.key_insight }}
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if website_cro.ab_tests %}
+            <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">A/B Testing Priorities</h3>
+            
+            {% for test in website_cro.ab_tests %}
+            <div class="rec-item">
+                <div class="rec-number">{{ loop.index }}</div>
+                <div class="rec-title">{{ test.title }}</div>
+                <div class="rec-description">
+                    {{ test.description }}
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <!-- SECTION 09: ORGANIC TRAFFIC -->
+        <div class="content-page">
+            <div class="section-number">{% if market_threat %}09{% else %}08{% endif %} — Search Visibility</div>
+            <h1 class="section-title">Organic Traffic Analysis</h1>
+            
+            {% if organic_traffic.screenshot %}
+            <div class="screenshot-box">
+                <img src="{{ organic_traffic.screenshot }}" alt="Organic Traffic Analysis">
+            </div>
+            {% endif %}
+            
+            <div class="three-col-section mt-60">
+                <div>
+                    <div class="col-header">What This Means</div>
+                    <div class="col-content">
+                        {{ organic_traffic.what_this_means }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">Why It Matters</div>
+                    <div class="col-content">
+                        {{ organic_traffic.why_it_matters }}
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">How To Improve</div>
+                    <div class="col-content">
+                        <ul>
+                            {% for item in organic_traffic.how_to_improve %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            {% if organic_traffic.key_insight %}
+            <div class="insight-box mt-60">
+                <div class="insight-label">Ranking Position Impact</div>
+                <div class="insight-text">
+                    {{ organic_traffic.key_insight }}
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if organic_traffic.growth_opportunity %}
+            <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">Traffic Growth Opportunity</h3>
+            
+            {% for metric in organic_traffic.growth_opportunity %}
+            <div class="data-row">
+                <span class="data-label">{{ metric.label }}</span>
+                <span class="data-value">{{ metric.value }}</span>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <!-- SECTION 10: RECOMMENDATIONS -->
+        <div class="content-page">
+            <div class="section-number">{% if market_threat %}10{% else %}09{% endif %} — Action Plan</div>
+            <h1 class="section-title">Strategic Recommendations</h1>
+            
+            <p class="section-intro mb-60">
+                {{ recommendations.intro }}
+            </p>
+            
+            {% for rec in recommendations.items %}
+            <div class="rec-item">
+                <div class="rec-number">{{ loop.index }}</div>
+                <div class="rec-title">{{ rec.title }}</div>
+                <div class="rec-description">
+                    <strong>Priority: {{ rec.priority }} | Effort: {{ rec.effort }} | Impact: {{ rec.impact }}</strong><br><br>
+                    {{ rec.description }}
+                </div>
+            </div>
+            {% endfor %}
+            
+            {% if recommendations.quick_wins %}
+            <div class="insight-box mt-60">
+                <div class="insight-label">{{ recommendations.quick_wins.label }}</div>
+                <div class="insight-text">
+                    {{ recommendations.quick_wins.text }}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- FINAL PAGE: SUMMARY -->
+        <div class="content-page">
+            <div class="section-number">Final Summary</div>
+            <h1 class="section-title">Executive Overview</h1>
+            
+            <p class="section-intro mb-60">
+                {{ final_summary.intro }}
+            </p>
+            
+            <h3 class="section-title" style="font-size: 24px;">Critical Findings</h3>
+            
+            <div class="rec-description mb-40">
+                {% for finding in final_summary.findings %}
+                <strong>{{ loop.index }}. {{ finding.title }}</strong> {{ finding.description }}<br><br>
+                {% endfor %}
+            </div>
+            
+            <div class="three-col-section mt-60">
+                {% for timeframe in final_summary.timeframes %}
+                <div>
+                    <div class="col-header">{{ timeframe.period }}</div>
+                    <div class="col-content">
+                        <ul>
+                            {% for item in timeframe.actions %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                        <strong style="margin-top: 20px; display: block;">{{ timeframe.expected }}</strong>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="insight-box mt-60">
+                <div class="insight-label">Bottom Line</div>
+                <div class="insight-text" style="font-size: 18px;">
+                    {{ final_summary.bottom_line }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+
