@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Local SEO Performance Report - {{ company.name }}</title>
+    <title>Local SEO Performance Report - [COMPANY_NAME]</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -417,17 +417,23 @@
         
         <!-- COVER PAGE -->
         <div class="cover">
-            <div class="cover-date">{{ report_date }} | Confidential</div>
-            <div class="cover-title">{{ company.name }}<br>Digital Performance Audit</div>
-            <div class="cover-subtitle">{{ cover.subtitle }}</div>
+            <div class="cover-date">[REPORT_DATE] | Confidential</div>
+            <div class="cover-title">[COMPANY_NAME]<br>Digital Performance Audit</div>
+            <div class="cover-subtitle">Local SEO Analysis & Growth Strategy</div>
             
             <div class="cover-metrics">
-                {% for metric in cover.metrics %}
                 <div>
-                    <div class="cover-metric-label">{{ metric.label }}</div>
-                    <div class="cover-metric-value">{{ metric.value }}</div>
+                    <div class="cover-metric-label">Current Ranking</div>
+                    <div class="cover-metric-value">[CURRENT_RANKING]</div>
                 </div>
-                {% endfor %}
+                <div>
+                    <div class="cover-metric-label">Google Reviews</div>
+                    <div class="cover-metric-value">[GOOGLE_REVIEWS]</div>
+                </div>
+                <div>
+                    <div class="cover-metric-label">Avg. Rating</div>
+                    <div class="cover-metric-value">[AVG_RATING]</div>
+                </div>
             </div>
         </div>
 
@@ -435,13 +441,59 @@
         <div class="toc-page">
             <h1 class="toc-title">Table of Contents</h1>
             
-            {% for item in toc %}
             <a href="#" class="toc-item">
-                <span class="toc-item-number">{{ "%02d" % loop.index }}</span>
-                <span class="toc-item-title">{{ item.title }}</span>
-                <span class="toc-item-page">{{ "%02d" % (loop.index + 2) }}</span>
+                <span class="toc-item-number">01</span>
+                <span class="toc-item-title">Executive Summary</span>
+                <span class="toc-item-page">03</span>
             </a>
-            {% endfor %}
+            
+            <a href="#" class="toc-item">
+                <span class="toc-item-number">02</span>
+                <span class="toc-item-title">Domain Authority & Technical SEO</span>
+                <span class="toc-item-page">04</span>
+            </a>
+            
+            <a href="#" class="toc-item">
+                <span class="toc-item-number">03</span>
+                <span class="toc-item-title">Local Citations & NAP Consistency</span>
+                <span class="toc-item-page">05</span>
+            </a>
+            
+            <a href="#" class="toc-item">
+                <span class="toc-item-number">04</span>
+                <span class="toc-item-title">Reputation Management</span>
+                <span class="toc-item-page">06</span>
+            </a>
+            
+            <a href="#" class="toc-item">
+                <span class="toc-item-number">05</span>
+                <span class="toc-item-title">Local Search Grid Performance</span>
+                <span class="toc-item-page">07</span>
+            </a>
+            
+            <a href="#" class="toc-item">
+                <span class="toc-item-number">06</span>
+                <span class="toc-item-title">Competitive Analysis</span>
+                <span class="toc-item-page">08</span>
+            </a>
+            
+            <a href="#" class="toc-item">
+                <span class="toc-item-number">07</span>
+                <span class="toc-item-title">Website Conversion Rate Optimization</span>
+                <span class="toc-item-page">09</span>
+            </a>
+            
+            <a href="#" class="toc-item">
+                <span class="toc-item-number">08</span>
+                <span class="toc-item-title">Organic Traffic Analysis</span>
+                <span class="toc-item-page">10</span>
+            </a>
+            
+            <a href="#" class="toc-item">
+                <span class="toc-item-number">09</span>
+                <span class="toc-item-title">Strategic Recommendations</span>
+                <span class="toc-item-page">11</span>
+            </a>
         </div>
 
         <!-- SECTION 01: EXECUTIVE SUMMARY -->
@@ -450,7 +502,7 @@
             <h1 class="section-title">Current State Assessment</h1>
             
             <p class="section-intro">
-                {{ executive_summary.intro }}
+                [COMPANY_NAME] [EXECUTIVE_SUMMARY_INTRO]
             </p>
             
             <div class="three-col-section">
@@ -458,9 +510,10 @@
                     <div class="col-header">Strengths</div>
                     <div class="col-content">
                         <ul>
-                            {% for item in executive_summary.strengths %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
+                            <li>[STRENGTH_1]</li>
+                            <li>[STRENGTH_2]</li>
+                            <li>[STRENGTH_3]</li>
+                            <li>[STRENGTH_4]</li>
                         </ul>
                     </div>
                 </div>
@@ -469,9 +522,10 @@
                     <div class="col-header">Weaknesses</div>
                     <div class="col-content">
                         <ul>
-                            {% for item in executive_summary.weaknesses %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
+                            <li>[WEAKNESS_1]</li>
+                            <li>[WEAKNESS_2]</li>
+                            <li>[WEAKNESS_3]</li>
+                            <li>[WEAKNESS_4]</li>
                         </ul>
                     </div>
                 </div>
@@ -480,31 +534,53 @@
                     <div class="col-header">Opportunities</div>
                     <div class="col-content">
                         <ul>
-                            {% for item in executive_summary.opportunities %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
+                            <li>[OPPORTUNITY_1]</li>
+                            <li>[OPPORTUNITY_2]</li>
+                            <li>[OPPORTUNITY_3]</li>
+                            <li>[OPPORTUNITY_4]</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            {% if executive_summary.critical_finding %}
             <div class="warning-box">
                 <div class="warning-label">Critical Finding</div>
                 <div class="insight-text">
-                    {{ executive_summary.critical_finding }}
+                    <strong>[CRITICAL_FINDING_HEADLINE]</strong> [CRITICAL_FINDING_DETAILS]
                 </div>
             </div>
-            {% endif %}
             
             <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">Key Performance Indicators</h3>
             
-            {% for kpi in executive_summary.kpis %}
             <div class="data-row">
-                <span class="data-label">{{ kpi.label }}</span>
-                <span class="data-value">{{ kpi.value }}</span>
+                <span class="data-label">Domain Authority</span>
+                <span class="data-value">[DOMAIN_AUTHORITY]</span>
             </div>
-            {% endfor %}
+            
+            <div class="data-row">
+                <span class="data-label">Trust Flow</span>
+                <span class="data-value">[TRUST_FLOW]</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">Citation Flow</span>
+                <span class="data-value">[CITATION_FLOW]</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">Total Backlinks</span>
+                <span class="data-value">[TOTAL_BACKLINKS]</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">Linking Domains</span>
+                <span class="data-value">[LINKING_DOMAINS]</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">Organic Traffic (Monthly)</span>
+                <span class="data-value">[MONTHLY_TRAFFIC]</span>
+            </div>
         </div>
 
         <!-- SECTION 02: DOMAIN AUTHORITY -->
@@ -512,24 +588,22 @@
             <div class="section-number">02 — Technical SEO Foundation</div>
             <h1 class="section-title">Domain Authority & Backlink Profile</h1>
             
-            {% if domain_authority.screenshot %}
             <div class="screenshot-box">
-                <img src="{{ domain_authority.screenshot }}" alt="Domain Authority Analysis" style="width: 100%; height: auto;">
+                <img src="[DOMAIN_AUTHORITY_SCREENSHOT]" alt="Domain Authority Analysis" style="width: 100%; height: auto;">
             </div>
-            {% endif %}
             
             <div class="three-col-section mt-60">
                 <div>
                     <div class="col-header">What This Means</div>
                     <div class="col-content">
-                        {{ domain_authority.what_this_means }}
+                        [DOMAIN_AUTHORITY_WHAT_THIS_MEANS]
                     </div>
                 </div>
                 
                 <div>
                     <div class="col-header">Why It Matters</div>
                     <div class="col-content">
-                        {{ domain_authority.why_it_matters }}
+                        [DOMAIN_AUTHORITY_WHY_IT_MATTERS]
                     </div>
                 </div>
                 
@@ -537,22 +611,21 @@
                     <div class="col-header">How To Improve</div>
                     <div class="col-content">
                         <ul>
-                            {% for item in domain_authority.how_to_improve %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
+                            <li>[DA_IMPROVEMENT_1]</li>
+                            <li>[DA_IMPROVEMENT_2]</li>
+                            <li>[DA_IMPROVEMENT_3]</li>
+                            <li>[DA_IMPROVEMENT_4]</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            {% if domain_authority.key_insight %}
             <div class="insight-box mt-60">
                 <div class="insight-label">Key Insight</div>
                 <div class="insight-text">
-                    {{ domain_authority.key_insight }}
+                    [DOMAIN_AUTHORITY_KEY_INSIGHT]
                 </div>
             </div>
-            {% endif %}
         </div>
 
         <!-- SECTION 03: CITATIONS -->
@@ -560,24 +633,22 @@
             <div class="section-number">03 — Local Citations</div>
             <h1 class="section-title">Citation Completeness & NAP Consistency</h1>
             
-            {% if citations.screenshot %}
             <div class="screenshot-box">
-                <img src="{{ citations.screenshot }}" alt="Citation Analysis">
+                <img src="[CITATIONS_SCREENSHOT]" alt="Citation Analysis">
             </div>
-            {% endif %}
             
             <div class="three-col-section mt-60">
                 <div>
                     <div class="col-header">What This Means</div>
                     <div class="col-content">
-                        {{ citations.what_this_means }}
+                        [CITATIONS_WHAT_THIS_MEANS]
                     </div>
                 </div>
                 
                 <div>
                     <div class="col-header">Why It Matters</div>
                     <div class="col-content">
-                        {{ citations.why_it_matters }}
+                        [CITATIONS_WHY_IT_MATTERS]
                     </div>
                 </div>
                 
@@ -585,33 +656,33 @@
                     <div class="col-header">How To Improve</div>
                     <div class="col-content">
                         <ul>
-                            {% for item in citations.how_to_improve %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
+                            <li>[CITATIONS_IMPROVEMENT_1]</li>
+                            <li>[CITATIONS_IMPROVEMENT_2]</li>
+                            <li>[CITATIONS_IMPROVEMENT_3]</li>
+                            <li>[CITATIONS_IMPROVEMENT_4]</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            {% if citations.warning %}
             <div class="warning-box mt-60">
                 <div class="warning-label">Immediate Action Required</div>
                 <div class="insight-text">
-                    {{ citations.warning }}
+                    <strong>[CITATIONS_WARNING_HEADLINE]</strong> [CITATIONS_WARNING_DETAILS]
                 </div>
             </div>
-            {% endif %}
             
-            {% if citations.nap_errors %}
             <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">NAP Errors Identified</h3>
             
-            {% for error in citations.nap_errors %}
             <div class="data-row">
-                <span class="data-label">{{ error.type }}</span>
-                <span class="data-value">{{ error.count }}</span>
+                <span class="data-label">Address Inconsistency</span>
+                <span class="data-value">[ADDRESS_INCONSISTENCY_COUNT]</span>
             </div>
-            {% endfor %}
-            {% endif %}
+            
+            <div class="data-row">
+                <span class="data-label">Phone Inconsistency</span>
+                <span class="data-value">[PHONE_INCONSISTENCY_COUNT]</span>
+            </div>
         </div>
 
         <!-- SECTION 04: REPUTATION -->
@@ -619,24 +690,22 @@
             <div class="section-number">04 — Online Reputation</div>
             <h1 class="section-title">Review Analysis & Management</h1>
             
-            {% if reputation.screenshot %}
             <div class="screenshot-box">
-                <img src="{{ reputation.screenshot }}" alt="Reputation Management">
+                <img src="[REPUTATION_SCREENSHOT]" alt="Reputation Management">
             </div>
-            {% endif %}
             
             <div class="three-col-section mt-60">
                 <div>
                     <div class="col-header">What This Means</div>
                     <div class="col-content">
-                        {{ reputation.what_this_means }}
+                        [REPUTATION_WHAT_THIS_MEANS]
                     </div>
                 </div>
                 
                 <div>
                     <div class="col-header">Why It Matters</div>
                     <div class="col-content">
-                        {{ reputation.why_it_matters }}
+                        [REPUTATION_WHY_IT_MATTERS]
                     </div>
                 </div>
                 
@@ -644,31 +713,38 @@
                     <div class="col-header">How To Improve</div>
                     <div class="col-content">
                         <ul>
-                            {% for item in reputation.how_to_improve %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
+                            <li>[REPUTATION_IMPROVEMENT_1]</li>
+                            <li>[REPUTATION_IMPROVEMENT_2]</li>
+                            <li>[REPUTATION_IMPROVEMENT_3]</li>
+                            <li>[REPUTATION_IMPROVEMENT_4]</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            {% if reputation.key_insight %}
             <div class="insight-box mt-60">
                 <div class="insight-label">Competitive Advantage</div>
                 <div class="insight-text">
-                    {{ reputation.key_insight }}
+                    [REPUTATION_KEY_INSIGHT]
                 </div>
             </div>
-            {% endif %}
             
             <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">Review Distribution</h3>
             
-            {% for platform in reputation.review_distribution %}
             <div class="data-row">
-                <span class="data-label">{{ platform.platform }}</span>
-                <span class="data-value">{{ platform.count }} ({{ platform.rating }}★)</span>
+                <span class="data-label">Google Reviews</span>
+                <span class="data-value">[GOOGLE_REVIEWS] ([GOOGLE_RATING]★)</span>
             </div>
-            {% endfor %}
+            
+            <div class="data-row">
+                <span class="data-label">Yelp Reviews</span>
+                <span class="data-value">[YELP_REVIEWS] ([YELP_RATING]★)</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">New Reviews (Last 30 Days)</span>
+                <span class="data-value">[NEW_REVIEWS_LAST_30_DAYS]</span>
+            </div>
         </div>
 
         <!-- SECTION 05: LOCAL SEARCH GRID -->
@@ -676,24 +752,22 @@
             <div class="section-number">05 — Geographic Performance</div>
             <h1 class="section-title">Local Search Grid Analysis</h1>
             
-            {% if search_grid.screenshot %}
             <div class="screenshot-box">
-                <img src="{{ search_grid.screenshot }}" alt="Local Search Grid">
+                <img src="[SEARCH_GRID_SCREENSHOT]" alt="Local Search Grid">
             </div>
-            {% endif %}
             
             <div class="three-col-section mt-60">
                 <div>
                     <div class="col-header">What This Means</div>
                     <div class="col-content">
-                        {{ search_grid.what_this_means }}
+                        [SEARCH_GRID_WHAT_THIS_MEANS]
                     </div>
                 </div>
                 
                 <div>
                     <div class="col-header">Why It Matters</div>
                     <div class="col-content">
-                        {{ search_grid.why_it_matters }}
+                        [SEARCH_GRID_WHY_IT_MATTERS]
                     </div>
                 </div>
                 
@@ -701,22 +775,21 @@
                     <div class="col-header">How To Improve</div>
                     <div class="col-content">
                         <ul>
-                            {% for item in search_grid.how_to_improve %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
+                            <li>[SEARCH_GRID_IMPROVEMENT_1]</li>
+                            <li>[SEARCH_GRID_IMPROVEMENT_2]</li>
+                            <li>[SEARCH_GRID_IMPROVEMENT_3]</li>
+                            <li>[SEARCH_GRID_IMPROVEMENT_4]</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            {% if search_grid.key_insight %}
             <div class="insight-box mt-60">
                 <div class="insight-label">Geographic Opportunity</div>
                 <div class="insight-text">
-                    {{ search_grid.key_insight }}
+                    [SEARCH_GRID_KEY_INSIGHT]
                 </div>
             </div>
-            {% endif %}
         </div>
 
         <!-- SECTION 06: COMPETITIVE ANALYSIS -->
@@ -724,24 +797,22 @@
             <div class="section-number">06 — Market Positioning</div>
             <h1 class="section-title">Competitive Landscape Analysis</h1>
             
-            {% if competitive_analysis.screenshot %}
             <div class="screenshot-box">
-                <img src="{{ competitive_analysis.screenshot }}" alt="Competitive Analysis">
+                <img src="[COMPETITIVE_SCREENSHOT]" alt="Competitive Analysis">
             </div>
-            {% endif %}
             
             <div class="three-col-section mt-60">
                 <div>
                     <div class="col-header">What This Means</div>
                     <div class="col-content">
-                        {{ competitive_analysis.what_this_means }}
+                        [COMPETITIVE_WHAT_THIS_MEANS]
                     </div>
                 </div>
                 
                 <div>
                     <div class="col-header">Why It Matters</div>
                     <div class="col-content">
-                        {{ competitive_analysis.why_it_matters }}
+                        [COMPETITIVE_WHY_IT_MATTERS]
                     </div>
                 </div>
                 
@@ -749,15 +820,16 @@
                     <div class="col-header">How To Improve</div>
                     <div class="col-content">
                         <ul>
-                            {% for item in competitive_analysis.how_to_improve %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
+                            <li>[COMPETITIVE_IMPROVEMENT_1]</li>
+                            <li>[COMPETITIVE_IMPROVEMENT_2]</li>
+                            <li>[COMPETITIVE_IMPROVEMENT_3]</li>
+                            <li>[COMPETITIVE_IMPROVEMENT_4]</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">Top {{ competitive_analysis.competitors|length }} Competitors</h3>
+            <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">Top 5 Competitors</h3>
             
             <table class="competitor-table">
                 <thead>
@@ -771,122 +843,71 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for competitor in competitive_analysis.competitors %}
-                    <tr{% if competitor.is_client %} style="background: #f0f7ff;"{% endif %}>
-                        <td><strong>{{ competitor.rank }}</strong></td>
-                        <td class="competitor-name">{{ competitor.name }}</td>
-                        <td>{{ competitor.avg_position }}</td>
-                        <td>{{ competitor.reviews }}</td>
-                        <td>{{ competitor.rating }}★</td>
-                        <td>{{ competitor.links }}</td>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td class="competitor-name">[COMPETITOR_1_NAME]</td>
+                        <td>[COMPETITOR_1_POSITION]</td>
+                        <td>[COMPETITOR_1_REVIEWS]</td>
+                        <td>[COMPETITOR_1_RATING]★</td>
+                        <td>[COMPETITOR_1_LINKS]</td>
                     </tr>
-                    {% endfor %}
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td class="competitor-name">[COMPETITOR_2_NAME]</td>
+                        <td>[COMPETITOR_2_POSITION]</td>
+                        <td>[COMPETITOR_2_REVIEWS]</td>
+                        <td>[COMPETITOR_2_RATING]★</td>
+                        <td>[COMPETITOR_2_LINKS]</td>
+                    </tr>
+                    <tr style="background: #f0f7ff;">
+                        <td><strong>3</strong></td>
+                        <td class="competitor-name">[COMPANY_NAME]</td>
+                        <td>[COMPANY_RANKING_POSITION]</td>
+                        <td>[GOOGLE_REVIEWS]</td>
+                        <td>[AVG_RATING]★</td>
+                        <td>[TOTAL_BACKLINKS]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td class="competitor-name">[COMPETITOR_4_NAME]</td>
+                        <td>[COMPETITOR_4_POSITION]</td>
+                        <td>[COMPETITOR_4_REVIEWS]</td>
+                        <td>[COMPETITOR_4_RATING]★</td>
+                        <td>[COMPETITOR_4_LINKS]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5</strong></td>
+                        <td class="competitor-name">[COMPETITOR_5_NAME]</td>
+                        <td>[COMPETITOR_5_POSITION]</td>
+                        <td>[COMPETITOR_5_REVIEWS]</td>
+                        <td>[COMPETITOR_5_RATING]★</td>
+                        <td>[COMPETITOR_5_LINKS]</td>
+                    </tr>
                 </tbody>
             </table>
             
-            {% if competitive_analysis.key_insight %}
             <div class="insight-box mt-60">
                 <div class="insight-label">Strategic Finding</div>
                 <div class="insight-text">
-                    {{ competitive_analysis.key_insight }}
+                    [COMPETITIVE_KEY_INSIGHT]
                 </div>
             </div>
-            {% endif %}
         </div>
 
-        <!-- SECTION 07: MARKET THREAT (if exists) -->
-        {% if market_threat %}
+        <!-- SECTION 07: WEBSITE CRO -->
         <div class="content-page">
-            <div class="section-number">07 — Market Expansion Analysis</div>
-            <h1 class="section-title">{{ market_threat.title }}</h1>
-            
-            {% if market_threat.screenshot %}
-            <div class="screenshot-box">
-                <img src="{{ market_threat.screenshot }}" alt="Market Analysis">
-            </div>
-            {% endif %}
-            
-            <div class="three-col-section mt-60">
-                <div>
-                    <div class="col-header">Market Dynamics</div>
-                    <div class="col-content">
-                        {{ market_threat.market_dynamics }}
-                    </div>
-                </div>
-                
-                <div>
-                    <div class="col-header">Competitive Threat</div>
-                    <div class="col-content">
-                        {{ market_threat.competitive_threat }}
-                    </div>
-                </div>
-                
-                <div>
-                    <div class="col-header">Expansion Strategy</div>
-                    <div class="col-content">
-                        <ul>
-                            {% for item in market_threat.expansion_strategy %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            {% if market_threat.competitors %}
-            <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">Key {{ market_threat.market_name }} Competitors</h3>
-            
-            <table class="competitor-table">
-                <thead>
-                    <tr>
-                        <th>Business Name</th>
-                        <th>Location</th>
-                        <th>Reviews</th>
-                        <th>Rating</th>
-                        <th>Competitive Advantage</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for competitor in market_threat.competitors %}
-                    <tr>
-                        <td class="competitor-name">{{ competitor.name }}</td>
-                        <td>{{ competitor.location }}</td>
-                        <td>{{ competitor.reviews }}</td>
-                        <td>{{ competitor.rating }}★</td>
-                        <td>{{ competitor.advantage }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% endif %}
-            
-            {% if market_threat.warning %}
-            <div class="warning-box mt-60">
-                <div class="warning-label">Revenue Impact</div>
-                <div class="insight-text">
-                    {{ market_threat.warning }}
-                </div>
-            </div>
-            {% endif %}
-        </div>
-        {% endif %}
-
-        <!-- SECTION 08: WEBSITE CRO -->
-        <div class="content-page">
-            <div class="section-number">{% if market_threat %}08{% else %}07{% endif %} — Conversion Optimization</div>
+            <div class="section-number">07 — Conversion Optimization</div>
             <h1 class="section-title">Website CRO Analysis</h1>
             
-            {% if website_cro.screenshot %}
             <div class="screenshot-box">
-                <img src="{{ website_cro.screenshot }}" alt="Website Analysis">
+                <img src="[WEBSITE_CRO_SCREENSHOT]" alt="Website Analysis">
             </div>
-            {% endif %}
             
             <div class="three-col-section mt-60">
                 <div>
                     <div class="col-header">Current State</div>
                     <div class="col-content">
-                        {{ website_cro.current_state }}
+                        [WEBSITE_CRO_CURRENT_STATE]
                     </div>
                 </div>
                 
@@ -894,9 +915,10 @@
                     <div class="col-header">Problems Identified</div>
                     <div class="col-content">
                         <ul>
-                            {% for item in website_cro.problems %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
+                            <li>[CRO_PROBLEM_1]</li>
+                            <li>[CRO_PROBLEM_2]</li>
+                            <li>[CRO_PROBLEM_3]</li>
+                            <li>[CRO_PROBLEM_4]</li>
                         </ul>
                     </div>
                 </div>
@@ -905,61 +927,70 @@
                     <div class="col-header">Recommendations</div>
                     <div class="col-content">
                         <ul>
-                            {% for item in website_cro.recommendations %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
+                            <li>[CRO_RECOMMENDATION_1]</li>
+                            <li>[CRO_RECOMMENDATION_2]</li>
+                            <li>[CRO_RECOMMENDATION_3]</li>
+                            <li>[CRO_RECOMMENDATION_4]</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            {% if website_cro.key_insight %}
             <div class="insight-box mt-60">
                 <div class="insight-label">Conversion Psychology</div>
                 <div class="insight-text">
-                    {{ website_cro.key_insight }}
+                    [WEBSITE_CRO_KEY_INSIGHT]
                 </div>
             </div>
-            {% endif %}
             
-            {% if website_cro.ab_tests %}
             <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">A/B Testing Priorities</h3>
             
-            {% for test in website_cro.ab_tests %}
             <div class="rec-item">
-                <div class="rec-number">{{ loop.index }}</div>
-                <div class="rec-title">{{ test.title }}</div>
+                <div class="rec-number">1</div>
+                <div class="rec-title">[AB_TEST_1_TITLE]</div>
                 <div class="rec-description">
-                    {{ test.description }}
+                    [AB_TEST_1_DESCRIPTION]
                 </div>
             </div>
-            {% endfor %}
-            {% endif %}
+            
+            <div class="rec-item">
+                <div class="rec-number">2</div>
+                <div class="rec-title">[AB_TEST_2_TITLE]</div>
+                <div class="rec-description">
+                    [AB_TEST_2_DESCRIPTION]
+                </div>
+            </div>
+            
+            <div class="rec-item">
+                <div class="rec-number">3</div>
+                <div class="rec-title">[AB_TEST_3_TITLE]</div>
+                <div class="rec-description">
+                    [AB_TEST_3_DESCRIPTION]
+                </div>
+            </div>
         </div>
 
-        <!-- SECTION 09: ORGANIC TRAFFIC -->
+        <!-- SECTION 08: ORGANIC TRAFFIC -->
         <div class="content-page">
-            <div class="section-number">{% if market_threat %}09{% else %}08{% endif %} — Search Visibility</div>
+            <div class="section-number">08 — Search Visibility</div>
             <h1 class="section-title">Organic Traffic Analysis</h1>
             
-            {% if organic_traffic.screenshot %}
             <div class="screenshot-box">
-                <img src="{{ organic_traffic.screenshot }}" alt="Organic Traffic Analysis">
+                <img src="[ORGANIC_TRAFFIC_SCREENSHOT]" alt="Organic Traffic Analysis">
             </div>
-            {% endif %}
             
             <div class="three-col-section mt-60">
                 <div>
                     <div class="col-header">What This Means</div>
                     <div class="col-content">
-                        {{ organic_traffic.what_this_means }}
+                        [ORGANIC_TRAFFIC_WHAT_THIS_MEANS]
                     </div>
                 </div>
                 
                 <div>
                     <div class="col-header">Why It Matters</div>
                     <div class="col-content">
-                        {{ organic_traffic.why_it_matters }}
+                        [ORGANIC_TRAFFIC_WHY_IT_MATTERS]
                     </div>
                 </div>
                 
@@ -967,63 +998,105 @@
                     <div class="col-header">How To Improve</div>
                     <div class="col-content">
                         <ul>
-                            {% for item in organic_traffic.how_to_improve %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
+                            <li>[TRAFFIC_IMPROVEMENT_1]</li>
+                            <li>[TRAFFIC_IMPROVEMENT_2]</li>
+                            <li>[TRAFFIC_IMPROVEMENT_3]</li>
+                            <li>[TRAFFIC_IMPROVEMENT_4]</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            {% if organic_traffic.key_insight %}
             <div class="insight-box mt-60">
                 <div class="insight-label">Ranking Position Impact</div>
                 <div class="insight-text">
-                    {{ organic_traffic.key_insight }}
+                    [ORGANIC_TRAFFIC_KEY_INSIGHT]
                 </div>
             </div>
-            {% endif %}
             
-            {% if organic_traffic.growth_opportunity %}
             <h3 class="section-title" style="font-size: 24px; margin-top: 60px;">Traffic Growth Opportunity</h3>
             
-            {% for metric in organic_traffic.growth_opportunity %}
             <div class="data-row">
-                <span class="data-label">{{ metric.label }}</span>
-                <span class="data-value">{{ metric.value }}</span>
+                <span class="data-label">Current Monthly Visits</span>
+                <span class="data-value">[MONTHLY_TRAFFIC]</span>
             </div>
-            {% endfor %}
-            {% endif %}
+            
+            <div class="data-row">
+                <span class="data-label">Projected with Optimization (6 months)</span>
+                <span class="data-value">[PROJECTED_TRAFFIC]</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">Estimated Additional Monthly Leads</span>
+                <span class="data-value">[ADDITIONAL_LEADS]</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">Potential Annual Revenue Impact</span>
+                <span class="data-value">[REVENUE_IMPACT]</span>
+            </div>
         </div>
 
-        <!-- SECTION 10: RECOMMENDATIONS -->
+        <!-- SECTION 09: RECOMMENDATIONS -->
         <div class="content-page">
-            <div class="section-number">{% if market_threat %}10{% else %}09{% endif %} — Action Plan</div>
+            <div class="section-number">09 — Action Plan</div>
             <h1 class="section-title">Strategic Recommendations</h1>
             
             <p class="section-intro mb-60">
-                {{ recommendations.intro }}
+                [RECOMMENDATIONS_INTRO]
             </p>
             
-            {% for rec in recommendations.items %}
             <div class="rec-item">
-                <div class="rec-number">{{ loop.index }}</div>
-                <div class="rec-title">{{ rec.title }}</div>
+                <div class="rec-number">1</div>
+                <div class="rec-title">[REC_1_TITLE]</div>
                 <div class="rec-description">
-                    <strong>Priority: {{ rec.priority }} | Effort: {{ rec.effort }} | Impact: {{ rec.impact }}</strong><br><br>
-                    {{ rec.description }}
+                    <strong>Priority: [REC_1_PRIORITY] | Effort: [REC_1_EFFORT] | Impact: [REC_1_IMPACT]</strong><br><br>
+                    [REC_1_DESCRIPTION]
                 </div>
             </div>
-            {% endfor %}
             
-            {% if recommendations.quick_wins %}
-            <div class="insight-box mt-60">
-                <div class="insight-label">{{ recommendations.quick_wins.label }}</div>
-                <div class="insight-text">
-                    {{ recommendations.quick_wins.text }}
+            <div class="rec-item">
+                <div class="rec-number">2</div>
+                <div class="rec-title">[REC_2_TITLE]</div>
+                <div class="rec-description">
+                    <strong>Priority: [REC_2_PRIORITY] | Effort: [REC_2_EFFORT] | Impact: [REC_2_IMPACT]</strong><br><br>
+                    [REC_2_DESCRIPTION]
                 </div>
             </div>
-            {% endif %}
+            
+            <div class="rec-item">
+                <div class="rec-number">3</div>
+                <div class="rec-title">[REC_3_TITLE]</div>
+                <div class="rec-description">
+                    <strong>Priority: [REC_3_PRIORITY] | Effort: [REC_3_EFFORT] | Impact: [REC_3_IMPACT]</strong><br><br>
+                    [REC_3_DESCRIPTION]
+                </div>
+            </div>
+            
+            <div class="rec-item">
+                <div class="rec-number">4</div>
+                <div class="rec-title">[REC_4_TITLE]</div>
+                <div class="rec-description">
+                    <strong>Priority: [REC_4_PRIORITY] | Effort: [REC_4_EFFORT] | Impact: [REC_4_IMPACT]</strong><br><br>
+                    [REC_4_DESCRIPTION]
+                </div>
+            </div>
+            
+            <div class="rec-item">
+                <div class="rec-number">5</div>
+                <div class="rec-title">[REC_5_TITLE]</div>
+                <div class="rec-description">
+                    <strong>Priority: [REC_5_PRIORITY] | Effort: [REC_5_EFFORT] | Impact: [REC_5_IMPACT]</strong><br><br>
+                    [REC_5_DESCRIPTION]
+                </div>
+            </div>
+            
+            <div class="insight-box mt-60">
+                <div class="insight-label">90-Day Quick Wins</div>
+                <div class="insight-text">
+                    [QUICK_WINS_SUMMARY]
+                </div>
+            </div>
         </div>
 
         <!-- FINAL PAGE: SUMMARY -->
@@ -1032,37 +1105,71 @@
             <h1 class="section-title">Executive Overview</h1>
             
             <p class="section-intro mb-60">
-                {{ final_summary.intro }}
+                [FINAL_SUMMARY_INTRO]
             </p>
             
             <h3 class="section-title" style="font-size: 24px;">Critical Findings</h3>
             
             <div class="rec-description mb-40">
-                {% for finding in final_summary.findings %}
-                <strong>{{ loop.index }}. {{ finding.title }}</strong> {{ finding.description }}<br><br>
-                {% endfor %}
+                <strong>1. [FINDING_1_TITLE]</strong> [FINDING_1_DESCRIPTION]<br><br>
+                
+                <strong>2. [FINDING_2_TITLE]</strong> [FINDING_2_DESCRIPTION]<br><br>
+                
+                <strong>3. [FINDING_3_TITLE]</strong> [FINDING_3_DESCRIPTION]<br><br>
+                
+                <strong>4. [FINDING_4_TITLE]</strong> [FINDING_4_DESCRIPTION]<br><br>
+                
+                <strong>5. [FINDING_5_TITLE]</strong> [FINDING_5_DESCRIPTION]<br><br>
             </div>
             
             <div class="three-col-section mt-60">
-                {% for timeframe in final_summary.timeframes %}
                 <div>
-                    <div class="col-header">{{ timeframe.period }}</div>
+                    <div class="col-header">30-Day Impact</div>
                     <div class="col-content">
                         <ul>
-                            {% for item in timeframe.actions %}
-                            <li>{{ item }}</li>
-                            {% endfor %}
+                            <li>[30_DAY_ACTION_1]</li>
+                            <li>[30_DAY_ACTION_2]</li>
+                            <li>[30_DAY_ACTION_3]</li>
+                            <li>[30_DAY_ACTION_4]</li>
+                            <li>[30_DAY_ACTION_5]</li>
                         </ul>
-                        <strong style="margin-top: 20px; display: block;">{{ timeframe.expected }}</strong>
+                        <strong style="margin-top: 20px; display: block;">[30_DAY_EXPECTED]</strong>
                     </div>
                 </div>
-                {% endfor %}
+                
+                <div>
+                    <div class="col-header">90-Day Impact</div>
+                    <div class="col-content">
+                        <ul>
+                            <li>[90_DAY_ACTION_1]</li>
+                            <li>[90_DAY_ACTION_2]</li>
+                            <li>[90_DAY_ACTION_3]</li>
+                            <li>[90_DAY_ACTION_4]</li>
+                            <li>[90_DAY_ACTION_5]</li>
+                        </ul>
+                        <strong style="margin-top: 20px; display: block;">[90_DAY_EXPECTED]</strong>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="col-header">12-Month Impact</div>
+                    <div class="col-content">
+                        <ul>
+                            <li>[12_MONTH_ACTION_1]</li>
+                            <li>[12_MONTH_ACTION_2]</li>
+                            <li>[12_MONTH_ACTION_3]</li>
+                            <li>[12_MONTH_ACTION_4]</li>
+                            <li>[12_MONTH_ACTION_5]</li>
+                        </ul>
+                        <strong style="margin-top: 20px; display: block;">[12_MONTH_EXPECTED]</strong>
+                    </div>
+                </div>
             </div>
             
             <div class="insight-box mt-60">
                 <div class="insight-label">Bottom Line</div>
                 <div class="insight-text" style="font-size: 18px;">
-                    {{ final_summary.bottom_line }}
+                    [BOTTOM_LINE_MESSAGE]
                 </div>
             </div>
         </div>
@@ -1070,4 +1177,5 @@
     </div>
 </body>
 </html>
+
 
